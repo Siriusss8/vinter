@@ -1,0 +1,137 @@
+{
+  "manifest_version": 3,
+  "name": "Vinter – seller filters for Vinted",
+  "short_name": "Vinter",
+  "version": "0.1.0",
+  "description": "Adds seller filters to Vinted search: minimum reviews, rating, account age, activity and reused photos.",
+  "homepage_url": "https://github.com/Siriusss8/vinter",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://*.vinted.net/*",
+    "https://*.vinted.at/*",
+    "https://*.vinted.be/*",
+    "https://*.vinted.co.uk/*",
+    "https://*.vinted.com/*",
+    "https://*.vinted.cz/*",
+    "https://*.vinted.de/*",
+    "https://*.vinted.dk/*",
+    "https://*.vinted.ee/*",
+    "https://*.vinted.es/*",
+    "https://*.vinted.fi/*",
+    "https://*.vinted.fr/*",
+    "https://*.vinted.gr/*",
+    "https://*.vinted.hr/*",
+    "https://*.vinted.hu/*",
+    "https://*.vinted.ie/*",
+    "https://*.vinted.it/*",
+    "https://*.vinted.lt/*",
+    "https://*.vinted.lu/*",
+    "https://*.vinted.lv/*",
+    "https://*.vinted.nl/*",
+    "https://*.vinted.pl/*",
+    "https://*.vinted.pt/*",
+    "https://*.vinted.ro/*",
+    "https://*.vinted.se/*",
+    "https://*.vinted.si/*",
+    "https://*.vinted.sk/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js",
+    "scripts": ["src/lib/dhash.js", "src/lib/limiter.js", "src/background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.vinted.at/*",
+        "https://www.vinted.be/*",
+        "https://www.vinted.co.uk/*",
+        "https://www.vinted.com/*",
+        "https://www.vinted.cz/*",
+        "https://www.vinted.de/*",
+        "https://www.vinted.dk/*",
+        "https://www.vinted.ee/*",
+        "https://www.vinted.es/*",
+        "https://www.vinted.fi/*",
+        "https://www.vinted.fr/*",
+        "https://www.vinted.gr/*",
+        "https://www.vinted.hr/*",
+        "https://www.vinted.hu/*",
+        "https://www.vinted.ie/*",
+        "https://www.vinted.it/*",
+        "https://www.vinted.lt/*",
+        "https://www.vinted.lu/*",
+        "https://www.vinted.lv/*",
+        "https://www.vinted.nl/*",
+        "https://www.vinted.pl/*",
+        "https://www.vinted.pt/*",
+        "https://www.vinted.ro/*",
+        "https://www.vinted.se/*",
+        "https://www.vinted.si/*",
+        "https://www.vinted.sk/*"
+      ],
+      "js": ["src/hook.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://www.vinted.at/*",
+        "https://www.vinted.be/*",
+        "https://www.vinted.co.uk/*",
+        "https://www.vinted.com/*",
+        "https://www.vinted.cz/*",
+        "https://www.vinted.de/*",
+        "https://www.vinted.dk/*",
+        "https://www.vinted.ee/*",
+        "https://www.vinted.es/*",
+        "https://www.vinted.fi/*",
+        "https://www.vinted.fr/*",
+        "https://www.vinted.gr/*",
+        "https://www.vinted.hr/*",
+        "https://www.vinted.hu/*",
+        "https://www.vinted.ie/*",
+        "https://www.vinted.it/*",
+        "https://www.vinted.lt/*",
+        "https://www.vinted.lu/*",
+        "https://www.vinted.lv/*",
+        "https://www.vinted.nl/*",
+        "https://www.vinted.pl/*",
+        "https://www.vinted.pt/*",
+        "https://www.vinted.ro/*",
+        "https://www.vinted.se/*",
+        "https://www.vinted.si/*",
+        "https://www.vinted.sk/*"
+      ],
+      "js": [
+        "src/lib/i18n.js",
+        "src/lib/extract.js",
+        "src/lib/age.js",
+        "src/lib/filters.js",
+        "src/lib/dhash.js",
+        "src/lib/queue.js",
+        "src/lib/limiter.js",
+        "src/content.js"
+      ],
+      "css": ["src/content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "vinter@siriusss8.github.io",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    },
+    "gecko_android": {
+      "strict_min_version": "142.0"
+    }
+  }
+}

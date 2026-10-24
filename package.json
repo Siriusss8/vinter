@@ -1,0 +1,16 @@
+{
+  "name": "vinter",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Browser extension adding seller filters to Vinted search.",
+  "license": "MIT",
+  "scripts": {
+    "lint": "web-ext lint --source-dir vinter",
+    "build": "web-ext build --source-dir vinter --artifacts-dir dist --overwrite-dest",
+    "start:firefox": "web-ext run --source-dir vinter --target firefox-desktop --start-url https://www.vinted.it/catalog?search_text=nike",
+    "start:chrome": "web-ext run --source-dir vinter --target chromium --start-url https://www.vinted.it/catalog?search_text=nike"
+  },
+  "devDependencies": {
+    "web-ext": "10.8.0"
+  }
+}

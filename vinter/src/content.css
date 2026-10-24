@@ -1,0 +1,128 @@
+/* Vinter: styles layered on top of Vinted's own web_ui classes and theme variables,
+   so light and dark themes follow the site automatically. */
+
+/* ------------------------------------------------------------------ cards */
+
+[data-vinter] {
+  position: relative;
+}
+
+[data-vinter="hide"] {
+  display: none !important;
+}
+
+[data-vinter="dim"] > * {
+  opacity: 0.35;
+  transition: opacity 0.15s ease;
+}
+
+[data-vinter="dim"]:hover > *,
+[data-vinter="dim"]:focus-within > * {
+  opacity: 1;
+}
+
+[data-vinter="dim"]::after {
+  content: attr(data-vinter-label);
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  z-index: 2;
+  pointer-events: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: rgba(var(--greyscale-level-6, 255, 255, 255), 1);
+  background: rgba(var(--warning-default, 208, 69, 85), 0.92);
+  width: fit-content;
+  max-width: calc(100% - 16px);
+}
+
+/* --------------------------------------------------------------- dropdown */
+
+.vinter-anchor {
+  position: relative;
+}
+
+.vinter-dropdown {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  min-width: 380px;
+  max-width: min(440px, calc(100vw - 16px));
+}
+
+.vinter-dropdown[hidden] {
+  display: none;
+}
+
+.vinter-scroll {
+  max-height: min(460px, 60vh);
+}
+
+.vinter-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.vinter-row + .vinter-row {
+  border-top: 1px solid rgba(var(--greyscale-level-5, 237, 242, 242), 1);
+}
+
+.vinter-row .web_ui__Cell__suffix {
+  align-self: center;
+  margin-left: 12px;
+}
+
+.vinter-select {
+  appearance: none;
+  -webkit-appearance: none;
+  min-width: 140px;
+  max-width: 180px;
+  height: 36px;
+  padding: 0 32px 0 12px;
+  border: 1px solid rgba(var(--greyscale-level-3, 102, 114, 115), 1);
+  border-radius: 6px;
+  font: inherit;
+  font-size: 14px;
+  color: rgba(var(--greyscale-level-1, 21, 25, 26), 1);
+  background-color: rgba(var(--greyscale-level-6, 255, 255, 255), 1);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23888' d='M2.47 4.47a.75.75 0 0 1 1.06 0L8 8.94l4.47-4.47a.75.75 0 1 1 1.06 1.06l-5 5a.75.75 0 0 1-1.06 0l-5-5a.75.75 0 0 1 0-1.06'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  cursor: pointer;
+  text-overflow: ellipsis;
+}
+
+.vinter-select:focus-visible {
+  outline: 2px solid rgba(var(--primary-default, 0, 119, 130), 1);
+  outline-offset: 2px;
+}
+
+.vinter-checkbox {
+  position: relative;
+  display: inline-flex;
+}
+
+/* Doubled class beats Vinted's own .web_ui__Text__text padding reset. */
+.vinter-status.vinter-status {
+  margin: 0;
+  padding: 8px 16px 0;
+}
+
+.vinter-actions {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px 8px;
+}
+
+.vinter-actions .vinter-btn {
+  flex: 1 1 0;
+}
+
+.vinter-chip-active {
+  border-color: rgba(var(--primary-default, 0, 119, 130), 1) !important;
+}

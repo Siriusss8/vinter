@@ -1,0 +1,27 @@
+node_modules/
+dist/
+*.zip
+*.xpi
+
+# The extension's own modules; overrides a global "lib/" ignore rule.
+!vinter/src/lib/
+
+# AI assistant / agent files (Kiro and others)
+.kiro/
+.claude/
+.cursor/
+.cursorrules
+.windsurf/
+.windsurfrules
+.aider*
+.continue/
+.codeium/
+.github/copilot-instructions.md
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
